@@ -1,4 +1,4 @@
-# OpenMBIR Software Index
+# OpenMBIR Resources
 
 This repository provides links to the OpenMBIR family of software packages.
 OpenMBIR is a family of open source packages for model-based iterative reconstruction (MBIR) of tomographic and other sensor data.
@@ -20,6 +20,18 @@ It offers:
 We believe it is state-of-the-art in both speed and quality for iterative reconstruction.
 In August 2026 we moved from JAX to PyTorch because of memory efficiency, speed, GPU hardware support, and easier integration with a wide range of PyTorch based AI applications.
 
+**[Gaussian Mixture EM Clustering Algorithm:](https://github.com/cabouman/pygmcluster)**
+This is a python package for estimating the order and parameters of a Gaussian mixture model from training data. It is a port of some earlier widely used [C code](https://engineering.purdue.edu/~bouman/software/cluster).
+
+
+**[XCal CT:](https://github.com/cabouman/xcal)**
+with documentation [here](https://xcal.readthedocs.io).
+This is software for automated calibration of X-ray CT sources and scanners.
+
+
+
+***Lagacy Code***
+
 **[MBIRJAX CT:](https://github.com/cabouman/mbirjax)**
 with documentation [here](https://mbirjax.readthedocs.io).
 This is the legacy software on which MBIRTorch is based. It is written in JAX. Everything in MBIRJAX has been ported to MBIRTorch, so we recommend that all users migrate to the new package. Migration should be easy because the two share very similar APIs.
@@ -32,9 +44,6 @@ This is a python package for cone beam CT reconstruction. The code is fairly fas
 
 **[MBIR Multislice Helical CT:](https://github.com/cabouman/mbirhelical)**
 This is a python package for multislice helical scan CT reconstruction. This is the geometry used by typical medical scanners. This is raw C code. It is reasonably well written, but since it is C code, it requires some effort to build and use. We are hoping to put a python front end on this code and accelerate it in the future.
-
-**[Gaussian Mixture EM Clustering Algorithm:](https://github.com/cabouman/pygmcluster)**
-This is a python package for estimating the order and parameters of a Gaussian mixture model from training data. It is a port of some earlier widely used [C code](https://engineering.purdue.edu/~bouman/software/cluster).
 
 **[C-code:](https://github.com/cabouman/C-code)**
 This is a simple C-code package for reading and writing TIFF images.
