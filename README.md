@@ -1,24 +1,40 @@
 # OpenMBIR Software Index
 
-This repository provides links to the OpenMBIR family of software packages. OpenMBIR is a family of open source reconstruction algorithms based on model-based iterative reconstruction that can be used to reconstruct tomographic data and other forms of sensor data.
+This repository provides links to the OpenMBIR family of software packages.
+OpenMBIR is a family of open source packages for model-based iterative reconstruction (MBIR) of tomographic and other sensor data.
+
+**[MBIRTorch CT:](https://github.com/cabouman/mbirtorch)**
+with documentation [here](https://mbirtorch.readthedocs.io).
+This is the newest, most flexible, and most efficient package, and it is based on PyTorch.
+It offers:
+
+- ease of use,
+- multi-GPU reconstruction using a variety of platforms including NVIDIA GPUs, Apple Silicon GPUs, and AMD GPUs (untested),
+- rapid and robust convergence,
+- support for parallel, cone beam (both curved and flat detectors), helical, and multi-axis (laminography) geometries,
+- 4D space-time reconstruction from standard scans,
+- support for a growing number of standard CT scanners, including NSI, Zeiss Versa, and Zeiss Ultra,
+- optimal view selection,
+- the ability to easily add new geometries.
+
+We believe it is state-of-the-art in both speed and quality for iterative reconstruction.
+In August 2026 we moved from JAX to PyTorch because of memory efficiency, speed, GPU hardware support, and easier integration with a wide range of PyTorch based AI applications.
 
 **[MBIRJAX CT:](https://github.com/cabouman/mbirjax)**
-This is a new package based on jax. It offers a) ease of use, b) high-performance on GPU plattforms, c) rapid and robust convergence, d) full support for both parallel and conebeam geometry, and e) the ability to easily add new geometries. Right now it can do 2k x 2k x 1k reconstructions on an 80 GB A100 GPU with about 200 GB CPU main memory in about 2.5 hours, which we believe is state-of-the-art both in speed and quality for iterative reconstruction. Currently, it provides basic-support for preprocessing of NSI data sets, and it is ideal for reconstructing data from synchrotrons, X-radia scanners, and TEM instruments. This package is probably the best choice for scientists and engineers who would like to use MBIR reconstruction. The documentation is available from [here](https://mbirjax.readthedocs.io).
+with documentation [here](https://mbirjax.readthedocs.io).
+This is the legacy software on which MBIRTorch is based. It is written in JAX. Everything in MBIRJAX has been ported to MBIRTorch, so we recommend that all users migrate to the new package. Migration should be easy because the two share very similar APIs.
 
 **[SVMBIR Parallel CT:](https://github.com/cabouman/svmbir)**
 This is a python package for parallel and fan beam CT reconstruction. The code is very fast and easy to use with good [documentation](https://svmbir.readthedocs.io/en/latest/index.html). This code is useful for reconstructing any parallel beam data including X-ray synchrotron and electron microscopy tilt sequences.
 
 **[MBIR Cone Beam CT:](https://github.com/cabouman/mbircone)**
-This is a python package for cone beam CT reconstruction. The code is fairly fast and easy to use. It also supports 4D and PnP reconstruction using CNN prior models. 
+This is a python package for cone beam CT reconstruction. The code is fairly fast and easy to use. It also supports 4D and PnP reconstruction using CNN prior models.
 
 **[MBIR Multislice Helical CT:](https://github.com/cabouman/mbirhelical)**
-This is a python package for multislice helical scan CT reconstruction. This is the geometry used by typical medical scanners. This is raw C code. It is reasonably well written, but since it is C code, it requires a lot of TLC to use. We are hoping to put a python front end on this code and accellerate it in the future.
+This is a python package for multislice helical scan CT reconstruction. This is the geometry used by typical medical scanners. This is raw C code. It is reasonably well written, but since it is C code, it requires some effort to build and use. We are hoping to put a python front end on this code and accelerate it in the future.
 
 **[Gaussian Mixture EM Clustering Algorithm:](https://github.com/cabouman/pygmcluster)**
 This is a python package for estimating the order and parameters of a Gaussian mixture model from training data. It is a port of some earlier widely used [C code](https://engineering.purdue.edu/~bouman/software/cluster).
-
-**[Cython Sandbox:](https://github.com/cabouman/sandbox)**
-This is a simple example of how you can use Cython to build a python interface to a C-code package.
 
 **[C-code:](https://github.com/cabouman/C-code)**
 This is a simple C-code package for reading and writing TIFF images.

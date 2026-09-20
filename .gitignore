@@ -1,0 +1,10 @@
+# IDE local state
+.idea/
+.vscode/
+
+# macOS Finder metadata
+.DS_Store
+
+# editor backups
+*~
+*.swp
