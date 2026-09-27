@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenMBIR Usage</title>
+<meta name="description" content="How many people download and use the OpenMBIR software packages: svmbir, mbirjax, and mbirtorch.">
+<style>
+:root {
+  color-scheme: light;
+  --surface: #fcfcfb; --surface-2: #f1f1ee; --grid: #e4e4df;
+  --text: #0b0b0b; --text-2: #52514e; --muted: #7d7c78;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface: #1a1a19; --surface-2: #232322; --grid: #343431;
+    --text: #ffffff; --text-2: #c3c2b7; --muted: #8f8e88;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #1a1a19; --surface-2: #232322; --grid: #343431;
+  --text: #ffffff; --text-2: #c3c2b7; --muted: #8f8e88;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--surface); color: var(--text);
+  font: 16px/1.5 -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+main { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 1.8rem; margin: 0 0 4px; }
+h2 { font-size: 1.25rem; margin: 40px 0 8px; }
+p { margin: 8px 0; color: var(--text-2); }
+p.lead { color: var(--text); font-size: 1.05rem; }
+a { color: var(--s1); }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0; }
+.tile { background: var(--surface-2); border-radius: 8px; padding: 14px 16px; }
+.tile .n { font-size: 1.7rem; font-weight: 600; line-height: 1.2; }
+.tile .l { color: var(--text-2); font-size: 0.9rem; }
+figure { margin: 12px 0 0; position: relative; }
+figcaption { color: var(--text-2); font-size: 0.9rem; margin: 4px 0 0; }
+.chart { width: 100%; height: auto; display: block; overflow: visible; }
+.grid { stroke: var(--grid); stroke-width: 1; }
+.axis { stroke: var(--grid); stroke-width: 1; }
+.tick { fill: var(--text-2); font-size: 12px; }
+.tick.muted { fill: var(--muted); font-size: 11px; }
+.label { fill: var(--text); font-size: 12px; font-weight: 600; }
+.bar { stroke: none; }
+.bar.s1 { fill: var(--s1); }
+.line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.dot { stroke: var(--surface); stroke-width: 2; }
+.line.s1, .dot.s1 { stroke: var(--s1); } .dot.s1 { fill: var(--s1); }
+.line.s2, .dot.s2 { stroke: var(--s2); } .dot.s2 { fill: var(--s2); }
+.line.s3, .dot.s3 { stroke: var(--s3); } .dot.s3 { fill: var(--s3); }
+.line.s4, .dot.s4 { stroke: var(--s4); } .dot.s4 { fill: var(--s4); }
+.line.s5, .dot.s5 { stroke: var(--s5); } .dot.s5 { fill: var(--s5); }
+.hit, .hit-all { fill: transparent; }
+.col:hover .bar, .col:focus .bar { filter: brightness(1.15); }
+.col:focus { outline: none; }
+.crosshair { stroke: var(--text-2); stroke-width: 1; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.9rem; color: var(--text-2); margin: 6px 0 0; }
+.swatch { display: inline-block; width: 14px; height: 3px; vertical-align: middle; margin-right: 6px; border-radius: 2px; }
+.swatch.s1 { background: var(--s1); } .swatch.s2 { background: var(--s2); } .swatch.s3 { background: var(--s3); }
+.swatch.s4 { background: var(--s4); } .swatch.s5 { background: var(--s5); }
+.tip { position: absolute; pointer-events: none; background: var(--surface-2); color: var(--text);
+  border: 1px solid var(--grid); border-radius: 6px; padding: 8px 10px; font-size: 0.85rem; line-height: 1.35;
+  box-shadow: 0 2px 8px rgba(0,0,0,.12); display: none; max-width: 260px; z-index: 2; }
+.tip b { font-weight: 600; }
+.tip .row { display: flex; gap: 8px; align-items: center; }
+.tip .row i { display: inline-block; width: 12px; height: 3px; border-radius: 2px; }
+table { border-collapse: collapse; margin: 8px 0; width: 100%; max-width: 520px; font-size: 0.95rem; }
+th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--grid); }
+th { color: var(--text-2); font-weight: 600; }
+td:nth-child(n+2), th:nth-child(n+2) { text-align: right; }
+.note { font-size: 0.9rem; }
+footer { margin-top: 48px; color: var(--muted); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>OpenMBIR usage</h1>
+<p class="lead">How many people download and use the <a href="https://github.com/cabouman/OpenMBIR-Resources">OpenMBIR</a>
+software packages for model-based iterative reconstruction: <a href="https://github.com/cabouman/svmbir">svmbir</a>,
+<a href="https://github.com/cabouman/mbirjax">mbirjax</a>, and <a href="https://github.com/cabouman/mbirtorch">mbirtorch</a>.
+Counts gathered on September 27, 2026.</p>
+
+<div class="tiles">
+  <div class="tile"><div class="n">177,519</div><div class="l">svmbir downloads from conda-forge since 2022</div></div>
+  <div class="tile"><div class="n">1,400</div><div class="l">a month for the current svmbir version</div></div>
+  <div class="tile"><div class="n">1,556</div><div class="l">PyPI installs of the three packages in the last 30 days</div></div>
+</div>
+
+<h2>svmbir on conda-forge</h2>
+<p>conda-forge is svmbir's main channel. Each column is one released version and the number of times its
+conda-forge package has been downloaded. Downloads of a version keep accumulating after the next one is
+released, so the newest version is still growing.</p>
+<figure>
+<svg viewBox="0 0 760 340" role="img" aria-labelledby="t-conda" class="chart"><title id="t-conda">Downloads of each svmbir version from conda-forge</title><line class="grid" x1="64" x2="736" y1="284.0" y2="284.0"/><text class="tick" x="56" y="288.0" text-anchor="end">0</text><line class="grid" x1="64" x2="736" y1="231.2" y2="231.2"/><text class="tick" x="56" y="235.2" text-anchor="end">10,000</text><line class="grid" x1="64" x2="736" y1="178.4" y2="178.4"/><text class="tick" x="56" y="182.4" text-anchor="end">20,000</text><line class="grid" x1="64" x2="736" y1="125.6" y2="125.6"/><text class="tick" x="56" y="129.6" text-anchor="end">30,000</text><line class="grid" x1="64" x2="736" y1="72.8" y2="72.8"/><text class="tick" x="56" y="76.8" text-anchor="end">40,000</text><line class="grid" x1="64" x2="736" y1="20.0" y2="20.0"/><text class="tick" x="56" y="24.0" text-anchor="end">50,000</text><line class="axis" x1="64" x2="736" y1="284" y2="284"/><g class="col" tabindex="0" data-tip="svmbir 0.2.7|9,325 downloads|released Feb 2022|about 9,800 a month while current"><rect class="hit" x="74.4" y="20" width="53.9" height="264"/><path class="bar s1" d="M89.3,284 v-45.2 a4,4 0 0 1 4,-4 h16.0 a4,4 0 0 1 4,4 v45.2 z"/></g><text class="tick" x="101.3" y="302" text-anchor="middle">0.2.7</text><text class="tick muted" x="101.3" y="318" text-anchor="middle">Feb 2022</text><g class="col" tabindex="0" data-tip="svmbir 0.2.8|18,767 downloads|released Mar 2022|about 21,200 a month while current"><rect class="hit" x="149.1" y="20" width="53.9" height="264"/><path class="bar s1" d="M164.0,284 v-95.1 a4,4 0 0 1 4,-4 h16.0 a4,4 0 0 1 4,4 v95.1 z"/></g><text class="tick" x="176.0" y="302" text-anchor="middle">0.2.8</text><text class="tick muted" x="176.0" y="318" text-anchor="middle">Mar 2022</text><g class="col" tabindex="0" data-tip="svmbir 0.2.9|30,894 downloads|released Apr 2022|about 6,600 a month while current"><rect class="hit" x="223.7" y="20" width="53.9" height="264"/><path class="bar s1" d="M238.7,284 v-159.1 a4,4 0 0 1 4,-4 h16.0 a4,4 0 0 1 4,4 v159.1 z"/></g><text class="tick" x="250.7" y="302" text-anchor="middle">0.2.9</text><text class="tick muted" x="250.7" y="318" text-anchor="middle">Apr 2022</text><g class="col" tabindex="0" data-tip="svmbir 0.2.10|17,599 downloads|released Aug 2022|about 35,200 a month while current"><rect class="hit" x="298.4" y="20" width="53.9" height="264"/><path class="bar s1" d="M313.3,284 v-88.9 a4,4 0 0 1 4,-4 h16.0 a4,4 0 0 1 4,4 v88.9 z"/></g><text class="tick" x="325.3" y="302" text-anchor="middle">0.2.10</text><text class="tick muted" x="325.3" y="318" text-anchor="middle">Aug 2022</text><g class="col" tabindex="0" data-tip="svmbir 0.3.0|14,828 downloads|released Sep 2022|about 4,700 a month while current"><rect class="hit" x="373.1" y="20" width="53.9" height="264"/><path class="bar s1" d="M388.0,284 v-74.3 a4,4 0 0 1 4,-4 h16.0 a4,4 0 0 1 4,4 v74.3 z"/></g><text class="tick" x="400.0" y="302" text-anchor="middle">0.3.0</text><text class="tick muted" x="400.0" y="318" text-anchor="middle">Sep 2022</text><g class="col" tabindex="0" data-tip="svmbir 0.3.1|13,699 downloads|released Dec 2022|about 14,400 a month while current"><rect class="hit" x="447.7" y="20" width="53.9" height="264"/><path class="bar s1" d="M462.7,284 v-68.3 a4,4 0 0 1 4,-4 h16.0 a4,4 0 0 1 4,4 v68.3 z"/></g><text class="tick" x="474.7" y="302" text-anchor="middle">0.3.1</text><text class="tick muted" x="474.7" y="318" text-anchor="middle">Dec 2022</text><g class="col" tabindex="0" data-tip="svmbir 0.3.3|16,508 downloads|released Jan 2023|about 1,400 a month while current"><rect class="hit" x="522.4" y="20" width="53.9" height="264"/><path class="bar s1" d="M537.3,284 v-83.2 a4,4 0 0 1 4,-4 h16.0 a4,4 0 0 1 4,4 v83.2 z"/></g><text class="tick" x="549.3" y="302" text-anchor="middle">0.3.3</text><text class="tick muted" x="549.3" y="318" text-anchor="middle">Jan 2023</text><g class="col" tabindex="0" data-tip="svmbir 0.3.4|11,336 downloads|released Dec 2023|about 22,700 a month while current"><rect class="hit" x="597.1" y="20" width="53.9" height="264"/><path class="bar s1" d="M612.0,284 v-55.9 a4,4 0 0 1 4,-4 h16.0 a4,4 0 0 1 4,4 v55.9 z"/></g><text class="tick" x="624.0" y="302" text-anchor="middle">0.3.4</text><text class="tick muted" x="624.0" y="318" text-anchor="middle">Dec 2023</text><g class="col" tabindex="0" data-tip="svmbir 0.4.0|44,563 downloads|released Jan 2024|about 1,400 a month while current"><rect class="hit" x="671.7" y="20" width="53.9" height="264"/><path class="bar s1" d="M686.7,284 v-231.3 a4,4 0 0 1 4,-4 h16.0 a4,4 0 0 1 4,4 v231.3 z"/></g><text class="label" x="698.7" y="40.7" text-anchor="middle">44,563</text><text class="tick" x="698.7" y="302" text-anchor="middle">0.4.0</text><text class="tick muted" x="698.7" y="318" text-anchor="middle">Jan 2024</text></svg>
+<figcaption>Downloads of each svmbir version from conda-forge, by release date. Source: anaconda.org.</figcaption>
+</figure>
+<p class="note">Of these downloads, 163,964 were the Linux package and
+13,555 the Intel Mac package. No Apple Silicon package existed before
+version 0.5.0. conda-forge counts every download, including mirrors and automated systems, so the number of
+people is smaller than the number of downloads.</p>
+
+<h2>PyPI downloads</h2>
+<p>Weekly downloads from PyPI with mirrors excluded, which is closer to real installs. mbirtorch was first
+released in August 2026. In the last six months: svmbir 3,985, mbirjax 2,561,
+mbirtorch 546.</p>
+<figure>
+<svg viewBox="0 0 760 340" role="img" aria-labelledby="t-pypi" class="chart"><title id="t-pypi">Weekly PyPI downloads of svmbir, mbirjax, and mbirtorch</title><line class="grid" x1="64" x2="736" y1="284.0" y2="284.0"/><text class="tick" x="56" y="288.0" text-anchor="end">0</text><line class="grid" x1="64" x2="736" y1="218.0" y2="218.0"/><text class="tick" x="56" y="222.0" text-anchor="end">100</text><line class="grid" x1="64" x2="736" y1="152.0" y2="152.0"/><text class="tick" x="56" y="156.0" text-anchor="end">200</text><line class="grid" x1="64" x2="736" y1="86.0" y2="86.0"/><text class="tick" x="56" y="90.0" text-anchor="end">300</text><line class="grid" x1="64" x2="736" y1="20.0" y2="20.0"/><text class="tick" x="56" y="24.0" text-anchor="end">400</text><line class="axis" x1="64" x2="736" y1="284" y2="284"/><text class="tick" x="92.0" y="302" text-anchor="middle">Apr</text><text class="tick" x="204.0" y="302" text-anchor="middle">May</text><text class="tick" x="316.0" y="302" text-anchor="middle">Jun</text><text class="tick" x="456.0" y="302" text-anchor="middle">Jul</text><text class="tick" x="568.0" y="302" text-anchor="middle">Aug</text><text class="tick" x="708.0" y="302" text-anchor="middle">Sep</text><path class="line s1" d="M64.0,132.2L92.0,121.6L120.0,170.5L148.0,177.7L176.0,210.7L204.0,192.3L232.0,233.2L260.0,77.4L288.0,135.5L316.0,171.1L344.0,218.7L372.0,49.0L400.0,241.1L428.0,201.5L456.0,243.7L484.0,176.4L512.0,91.3L540.0,183.7L568.0,236.5L596.0,256.3L624.0,211.4L652.0,207.4L680.0,217.3L708.0,128.2L736.0,243.7"/><circle class="dot s1" cx="736.0" cy="243.7" r="4"/><text class="label" x="744.0" y="247.7">svmbir</text><path class="line s2" d="M64.0,258.9L92.0,246.4L120.0,193.6L148.0,237.8L176.0,249.7L204.0,226.6L232.0,115.7L260.0,235.2L288.0,216.7L316.0,124.9L344.0,256.3L372.0,236.5L400.0,215.4L428.0,235.2L456.0,181.0L484.0,216.0L512.0,138.1L540.0,249.7L568.0,247.0L596.0,272.1L624.0,207.4L652.0,226.6L680.0,242.4L708.0,169.2L736.0,268.8"/><circle class="dot s2" cx="736.0" cy="268.8" r="4"/><text class="label" x="744.0" y="272.8">mbirjax</text><path class="line s3" d="M596.0,207.4L624.0,215.4L652.0,262.9L680.0,274.8L708.0,278.1L736.0,142.1"/><circle class="dot s3" cx="736.0" cy="142.1" r="4"/><text class="label" x="744.0" y="146.1">mbirtorch</text><line class="crosshair" x1="0" x2="0" y1="20" y2="284" visibility="hidden"/><rect class="hit-all" x="64" y="20" width="672" height="264" data-rows='[{"x": 64.0, "label": "Mar 30, 2026", "values": {"svmbir": 230, "mbirjax": 38, "mbirtorch": null}}, {"x": 92.0, "label": "Apr 06, 2026", "values": {"svmbir": 246, "mbirjax": 57, "mbirtorch": null}}, {"x": 120.0, "label": "Apr 13, 2026", "values": {"svmbir": 172, "mbirjax": 137, "mbirtorch": null}}, {"x": 148.0, "label": "Apr 20, 2026", "values": {"svmbir": 161, "mbirjax": 70, "mbirtorch": null}}, {"x": 176.0, "label": "Apr 27, 2026", "values": {"svmbir": 111, "mbirjax": 52, "mbirtorch": null}}, {"x": 204.0, "label": "May 04, 2026", "values": {"svmbir": 139, "mbirjax": 87, "mbirtorch": null}}, {"x": 232.0, "label": "May 11, 2026", "values": {"svmbir": 77, "mbirjax": 255, "mbirtorch": null}}, {"x": 260.0, "label": "May 18, 2026", "values": {"svmbir": 313, "mbirjax": 74, "mbirtorch": null}}, {"x": 288.0, "label": "May 25, 2026", "values": {"svmbir": 225, "mbirjax": 102, "mbirtorch": null}}, {"x": 316.0, "label": "Jun 01, 2026", "values": {"svmbir": 171, "mbirjax": 241, "mbirtorch": null}}, {"x": 344.0, "label": "Jun 08, 2026", "values": {"svmbir": 99, "mbirjax": 42, "mbirtorch": null}}, {"x": 372.0, "label": "Jun 15, 2026", "values": {"svmbir": 356, "mbirjax": 72, "mbirtorch": null}}, {"x": 400.0, "label": "Jun 22, 2026", "values": {"svmbir": 65, "mbirjax": 104, "mbirtorch": null}}, {"x": 428.0, "label": "Jun 29, 2026", "values": {"svmbir": 125, "mbirjax": 74, "mbirtorch": null}}, {"x": 456.0, "label": "Jul 06, 2026", "values": {"svmbir": 61, "mbirjax": 156, "mbirtorch": null}}, {"x": 484.0, "label": "Jul 13, 2026", "values": {"svmbir": 163, "mbirjax": 103, "mbirtorch": null}}, {"x": 512.0, "label": "Jul 20, 2026", "values": {"svmbir": 292, "mbirjax": 221, "mbirtorch": null}}, {"x": 540.0, "label": "Jul 27, 2026", "values": {"svmbir": 152, "mbirjax": 52, "mbirtorch": null}}, {"x": 568.0, "label": "Aug 03, 2026", "values": {"svmbir": 72, "mbirjax": 56, "mbirtorch": null}}, {"x": 596.0, "label": "Aug 10, 2026", "values": {"svmbir": 42, "mbirjax": 18, "mbirtorch": 116}}, {"x": 624.0, "label": "Aug 17, 2026", "values": {"svmbir": 110, "mbirjax": 116, "mbirtorch": 104}}, {"x": 652.0, "label": "Aug 24, 2026", "values": {"svmbir": 116, "mbirjax": 87, "mbirtorch": 32}}, {"x": 680.0, "label": "Aug 31, 2026", "values": {"svmbir": 101, "mbirjax": 63, "mbirtorch": 14}}, {"x": 708.0, "label": "Sep 07, 2026", "values": {"svmbir": 236, "mbirjax": 174, "mbirtorch": 9}}, {"x": 736.0, "label": "Sep 14, 2026", "values": {"svmbir": 61, "mbirjax": 23, "mbirtorch": 215}}]'/></svg>
+<figcaption>Weekly PyPI downloads, mirrors excluded, whole weeks only. Source: pypistats.org.</figcaption>
+</figure>
+<div class="legend" aria-label="Legend"><span class="key"><i class="swatch s1"></i>svmbir</span><span class="key"><i class="swatch s2"></i>mbirjax</span><span class="key"><i class="swatch s3"></i>mbirtorch</span></div>
+
+<h2>GitHub stars</h2>
+<p>Stars are readers who bookmarked a repository. The counts are small, as they are for most scientific
+software, but they show when each package found its audience.</p>
+<figure>
+<svg viewBox="0 0 760 340" role="img" aria-labelledby="t-stars" class="chart"><title id="t-stars">Cumulative GitHub stars of the OpenMBIR repositories over time</title><line class="grid" x1="64" x2="736" y1="284.0" y2="284.0"/><text class="tick" x="56" y="288.0" text-anchor="end">0</text><line class="grid" x1="64" x2="736" y1="196.0" y2="196.0"/><text class="tick" x="56" y="200.0" text-anchor="end">10</text><line class="grid" x1="64" x2="736" y1="108.0" y2="108.0"/><text class="tick" x="56" y="112.0" text-anchor="end">20</text><line class="grid" x1="64" x2="736" y1="20.0" y2="20.0"/><text class="tick" x="56" y="24.0" text-anchor="end">30</text><line class="axis" x1="64" x2="736" y1="284" y2="284"/><text class="tick" x="83.0" y="302" text-anchor="middle">2021</text><text class="tick" x="196.8" y="302" text-anchor="middle">2022</text><text class="tick" x="310.5" y="302" text-anchor="middle">2023</text><text class="tick" x="424.3" y="302" text-anchor="middle">2024</text><text class="tick" x="538.4" y="302" text-anchor="middle">2025</text><text class="tick" x="652.2" y="302" text-anchor="middle">2026</text><path class="line s1" d="M73.4,275.2H83.0V275.2H92.7V257.6H101.4V257.6H111.1V257.6H120.4V257.6H130.1V257.6H139.4V257.6H149.1V257.6H158.8V257.6H168.1V248.8H177.8V248.8H187.1V231.2H196.8V222.4H206.4V222.4H215.2V213.6H224.8V213.6H234.2V213.6H243.8V213.6H253.2V213.6H262.9V213.6H272.5V204.8H281.9V204.8H291.5V204.8H300.9V204.8H310.5V187.2H320.2V178.4H328.9V178.4H338.6V178.4H347.9V169.6H357.6V169.6H367.0V169.6H376.6V169.6H386.3V169.6H395.6V169.6H405.3V169.6H414.6V169.6H424.3V169.6H434.0V160.8H443.0V160.8H452.7V160.8H462.0V143.2H471.7V134.4H481.0V125.6H490.7V125.6H500.4V116.8H509.7V116.8H519.4V108.0H528.7V99.2H538.4V99.2H548.1V99.2H556.8V81.6H566.4V81.6H575.8V72.8H585.5V72.8H594.8V72.8H604.5V72.8H614.1V64.0H623.5V64.0H633.1V55.2H642.5V55.2H652.2V55.2H661.8V46.4H670.5V46.4H680.2V46.4H689.6V46.4H699.2V46.4H708.6V37.6H718.2V37.6H727.9V37.6H736.0V37.6H736.0"/><circle class="dot s1" cx="736.0" cy="37.6" r="4"/><text class="label" x="744.0" y="41.6">svmbir</text><path class="line s2" d="M481.0,257.6H490.7V257.6H500.4V240.0H509.7V222.4H519.4V204.8H528.7V178.4H538.4V178.4H548.1V178.4H556.8V178.4H566.4V178.4H575.8V178.4H585.5V160.8H594.8V152.0H604.5V134.4H614.1V134.4H623.5V125.6H633.1V125.6H642.5V125.6H652.2V116.8H661.8V116.8H670.5V116.8H680.2V108.0H689.6V99.2H699.2V90.4H708.6V90.4H718.2V90.4H727.9V81.6H736.0V81.6H736.0"/><circle class="dot s2" cx="736.0" cy="81.6" r="4"/><text class="label" x="744.0" y="85.6">mbirjax</text><path class="line s4" d="M101.4,275.2H111.1V275.2H120.4V275.2H130.1V275.2H139.4V275.2H149.1V275.2H158.8V275.2H168.1V275.2H177.8V275.2H187.1V275.2H196.8V275.2H206.4V275.2H215.2V275.2H224.8V266.4H234.2V257.6H243.8V257.6H253.2V257.6H262.9V257.6H272.5V257.6H281.9V257.6H291.5V257.6H300.9V257.6H310.5V257.6H320.2V257.6H328.9V257.6H338.6V248.8H347.9V248.8H357.6V248.8H367.0V248.8H376.6V248.8H386.3V248.8H395.6V248.8H405.3V240.0H414.6V240.0H424.3V231.2H434.0V213.6H443.0V213.6H452.7V213.6H462.0V196.0H471.7V196.0H481.0V196.0H490.7V196.0H500.4V196.0H509.7V196.0H519.4V196.0H528.7V196.0H538.4V196.0H548.1V196.0H556.8V196.0H566.4V196.0H575.8V196.0H585.5V196.0H594.8V196.0H604.5V178.4H614.1V178.4H623.5V178.4H633.1V178.4H642.5V178.4H652.2V178.4H661.8V178.4H670.5V169.6H680.2V169.6H689.6V169.6H699.2V169.6H708.6V160.8H718.2V160.8H727.9V160.8H736.0V160.8H736.0"/><circle class="dot s4" cx="736.0" cy="160.8" r="4"/><text class="label" x="744.0" y="164.8">mbircone</text><path class="line s5" d="M177.8,275.2H187.1V275.2H196.8V266.4H206.4V266.4H215.2V266.4H224.8V266.4H234.2V266.4H243.8V266.4H253.2V257.6H262.9V257.6H272.5V257.6H281.9V257.6H291.5V257.6H300.9V257.6H310.5V257.6H320.2V257.6H328.9V257.6H338.6V248.8H347.9V248.8H357.6V248.8H367.0V248.8H376.6V240.0H386.3V240.0H395.6V240.0H405.3V240.0H414.6V240.0H424.3V231.2H434.0V231.2H443.0V231.2H452.7V222.4H462.0V222.4H471.7V222.4H481.0V222.4H490.7V222.4H500.4V222.4H509.7V222.4H519.4V222.4H528.7V222.4H538.4V222.4H548.1V222.4H556.8V222.4H566.4V213.6H575.8V213.6H585.5V213.6H594.8V213.6H604.5V213.6H614.1V213.6H623.5V213.6H633.1V213.6H642.5V213.6H652.2V213.6H661.8V204.8H670.5V204.8H680.2V204.8H689.6V204.8H699.2V204.8H708.6V204.8H718.2V204.8H727.9V204.8H736.0V204.8H736.0"/><circle class="dot s5" cx="736.0" cy="204.8" r="4"/><text class="label" x="744.0" y="208.8">mbirhelical</text><line class="crosshair" x1="0" x2="0" y1="20" y2="284" visibility="hidden"/><rect class="hit-all" x="64" y="20" width="672" height="264" data-rows='[{"x": 64.0, "label": "Nov 01, 2020", "values": {"svmbir": null, "mbirjax": null, "mbircone": null, "mbirhelical": null}}, {"x": 73.4, "label": "Dec 01, 2020", "values": {"svmbir": 1, "mbirjax": null, "mbircone": null, "mbirhelical": null}}, {"x": 83.0, "label": "Jan 01, 2021", "values": {"svmbir": 1, "mbirjax": null, "mbircone": null, "mbirhelical": null}}, {"x": 92.7, "label": "Feb 01, 2021", "values": {"svmbir": 3, "mbirjax": null, "mbircone": null, "mbirhelical": null}}, {"x": 101.4, "label": "Mar 01, 2021", "values": {"svmbir": 3, "mbirjax": null, "mbircone": 1, "mbirhelical": null}}, {"x": 111.1, "label": "Apr 01, 2021", "values": {"svmbir": 3, "mbirjax": null, "mbircone": 1, "mbirhelical": null}}, {"x": 120.4, "label": "May 01, 2021", "values": {"svmbir": 3, "mbirjax": null, "mbircone": 1, "mbirhelical": null}}, {"x": 130.1, "label": "Jun 01, 2021", "values": {"svmbir": 3, "mbirjax": null, "mbircone": 1, "mbirhelical": null}}, {"x": 139.4, "label": "Jul 01, 2021", "values": {"svmbir": 3, "mbirjax": null, "mbircone": 1, "mbirhelical": null}}, {"x": 149.1, "label": "Aug 01, 2021", "values": {"svmbir": 3, "mbirjax": null, "mbircone": 1, "mbirhelical": null}}, {"x": 158.8, "label": "Sep 01, 2021", "values": {"svmbir": 3, "mbirjax": null, "mbircone": 1, "mbirhelical": null}}, {"x": 168.1, "label": "Oct 01, 2021", "values": {"svmbir": 4, "mbirjax": null, "mbircone": 1, "mbirhelical": null}}, {"x": 177.8, "label": "Nov 01, 2021", "values": {"svmbir": 4, "mbirjax": null, "mbircone": 1, "mbirhelical": 1}}, {"x": 187.1, "label": "Dec 01, 2021", "values": {"svmbir": 6, "mbirjax": null, "mbircone": 1, "mbirhelical": 1}}, {"x": 196.8, "label": "Jan 01, 2022", "values": {"svmbir": 7, "mbirjax": null, "mbircone": 1, "mbirhelical": 2}}, {"x": 206.4, "label": "Feb 01, 2022", "values": {"svmbir": 7, "mbirjax": null, "mbircone": 1, "mbirhelical": 2}}, {"x": 215.2, "label": "Mar 01, 2022", "values": {"svmbir": 8, "mbirjax": null, "mbircone": 1, "mbirhelical": 2}}, {"x": 224.8, "label": "Apr 01, 2022", "values": {"svmbir": 8, "mbirjax": null, "mbircone": 2, "mbirhelical": 2}}, {"x": 234.2, "label": "May 01, 2022", "values": {"svmbir": 8, "mbirjax": null, "mbircone": 3, "mbirhelical": 2}}, {"x": 243.8, "label": "Jun 01, 2022", "values": {"svmbir": 8, "mbirjax": null, "mbircone": 3, "mbirhelical": 2}}, {"x": 253.2, "label": "Jul 01, 2022", "values": {"svmbir": 8, "mbirjax": null, "mbircone": 3, "mbirhelical": 3}}, {"x": 262.9, "label": "Aug 01, 2022", "values": {"svmbir": 8, "mbirjax": null, "mbircone": 3, "mbirhelical": 3}}, {"x": 272.5, "label": "Sep 01, 2022", "values": {"svmbir": 9, "mbirjax": null, "mbircone": 3, "mbirhelical": 3}}, {"x": 281.9, "label": "Oct 01, 2022", "values": {"svmbir": 9, "mbirjax": null, "mbircone": 3, "mbirhelical": 3}}, {"x": 291.5, "label": "Nov 01, 2022", "values": {"svmbir": 9, "mbirjax": null, "mbircone": 3, "mbirhelical": 3}}, {"x": 300.9, "label": "Dec 01, 2022", "values": {"svmbir": 9, "mbirjax": null, "mbircone": 3, "mbirhelical": 3}}, {"x": 310.5, "label": "Jan 01, 2023", "values": {"svmbir": 11, "mbirjax": null, "mbircone": 3, "mbirhelical": 3}}, {"x": 320.2, "label": "Feb 01, 2023", "values": {"svmbir": 12, "mbirjax": null, "mbircone": 3, "mbirhelical": 3}}, {"x": 328.9, "label": "Mar 01, 2023", "values": {"svmbir": 12, "mbirjax": null, "mbircone": 3, "mbirhelical": 3}}, {"x": 338.6, "label": "Apr 01, 2023", "values": {"svmbir": 12, "mbirjax": null, "mbircone": 4, "mbirhelical": 4}}, {"x": 347.9, "label": "May 01, 2023", "values": {"svmbir": 13, "mbirjax": null, "mbircone": 4, "mbirhelical": 4}}, {"x": 357.6, "label": "Jun 01, 2023", "values": {"svmbir": 13, "mbirjax": null, "mbircone": 4, "mbirhelical": 4}}, {"x": 367.0, "label": "Jul 01, 2023", "values": {"svmbir": 13, "mbirjax": null, "mbircone": 4, "mbirhelical": 4}}, {"x": 376.6, "label": "Aug 01, 2023", "values": {"svmbir": 13, "mbirjax": null, "mbircone": 4, "mbirhelical": 5}}, {"x": 386.3, "label": "Sep 01, 2023", "values": {"svmbir": 13, "mbirjax": null, "mbircone": 4, "mbirhelical": 5}}, {"x": 395.6, "label": "Oct 01, 2023", "values": {"svmbir": 13, "mbirjax": null, "mbircone": 4, "mbirhelical": 5}}, {"x": 405.3, "label": "Nov 01, 2023", "values": {"svmbir": 13, "mbirjax": null, "mbircone": 5, "mbirhelical": 5}}, {"x": 414.6, "label": "Dec 01, 2023", "values": {"svmbir": 13, "mbirjax": null, "mbircone": 5, "mbirhelical": 5}}, {"x": 424.3, "label": "Jan 01, 2024", "values": {"svmbir": 13, "mbirjax": null, "mbircone": 6, "mbirhelical": 6}}, {"x": 434.0, "label": "Feb 01, 2024", "values": {"svmbir": 14, "mbirjax": null, "mbircone": 8, "mbirhelical": 6}}, {"x": 443.0, "label": "Mar 01, 2024", "values": {"svmbir": 14, "mbirjax": null, "mbircone": 8, "mbirhelical": 6}}, {"x": 452.7, "label": "Apr 01, 2024", "values": {"svmbir": 14, "mbirjax": null, "mbircone": 8, "mbirhelical": 7}}, {"x": 462.0, "label": "May 01, 2024", "values": {"svmbir": 16, "mbirjax": null, "mbircone": 10, "mbirhelical": 7}}, {"x": 471.7, "label": "Jun 01, 2024", "values": {"svmbir": 17, "mbirjax": null, "mbircone": 10, "mbirhelical": 7}}, {"x": 481.0, "label": "Jul 01, 2024", "values": {"svmbir": 18, "mbirjax": 3, "mbircone": 10, "mbirhelical": 7}}, {"x": 490.7, "label": "Aug 01, 2024", "values": {"svmbir": 18, "mbirjax": 3, "mbircone": 10, "mbirhelical": 7}}, {"x": 500.4, "label": "Sep 01, 2024", "values": {"svmbir": 19, "mbirjax": 5, "mbircone": 10, "mbirhelical": 7}}, {"x": 509.7, "label": "Oct 01, 2024", "values": {"svmbir": 19, "mbirjax": 7, "mbircone": 10, "mbirhelical": 7}}, {"x": 519.4, "label": "Nov 01, 2024", "values": {"svmbir": 20, "mbirjax": 9, "mbircone": 10, "mbirhelical": 7}}, {"x": 528.7, "label": "Dec 01, 2024", "values": {"svmbir": 21, "mbirjax": 12, "mbircone": 10, "mbirhelical": 7}}, {"x": 538.4, "label": "Jan 01, 2025", "values": {"svmbir": 21, "mbirjax": 12, "mbircone": 10, "mbirhelical": 7}}, {"x": 548.1, "label": "Feb 01, 2025", "values": {"svmbir": 21, "mbirjax": 12, "mbircone": 10, "mbirhelical": 7}}, {"x": 556.8, "label": "Mar 01, 2025", "values": {"svmbir": 23, "mbirjax": 12, "mbircone": 10, "mbirhelical": 7}}, {"x": 566.4, "label": "Apr 01, 2025", "values": {"svmbir": 23, "mbirjax": 12, "mbircone": 10, "mbirhelical": 8}}, {"x": 575.8, "label": "May 01, 2025", "values": {"svmbir": 24, "mbirjax": 12, "mbircone": 10, "mbirhelical": 8}}, {"x": 585.5, "label": "Jun 01, 2025", "values": {"svmbir": 24, "mbirjax": 14, "mbircone": 10, "mbirhelical": 8}}, {"x": 594.8, "label": "Jul 01, 2025", "values": {"svmbir": 24, "mbirjax": 15, "mbircone": 10, "mbirhelical": 8}}, {"x": 604.5, "label": "Aug 01, 2025", "values": {"svmbir": 24, "mbirjax": 17, "mbircone": 12, "mbirhelical": 8}}, {"x": 614.1, "label": "Sep 01, 2025", "values": {"svmbir": 25, "mbirjax": 17, "mbircone": 12, "mbirhelical": 8}}, {"x": 623.5, "label": "Oct 01, 2025", "values": {"svmbir": 25, "mbirjax": 18, "mbircone": 12, "mbirhelical": 8}}, {"x": 633.1, "label": "Nov 01, 2025", "values": {"svmbir": 26, "mbirjax": 18, "mbircone": 12, "mbirhelical": 8}}, {"x": 642.5, "label": "Dec 01, 2025", "values": {"svmbir": 26, "mbirjax": 18, "mbircone": 12, "mbirhelical": 8}}, {"x": 652.2, "label": "Jan 01, 2026", "values": {"svmbir": 26, "mbirjax": 19, "mbircone": 12, "mbirhelical": 8}}, {"x": 661.8, "label": "Feb 01, 2026", "values": {"svmbir": 27, "mbirjax": 19, "mbircone": 12, "mbirhelical": 9}}, {"x": 670.5, "label": "Mar 01, 2026", "values": {"svmbir": 27, "mbirjax": 19, "mbircone": 13, "mbirhelical": 9}}, {"x": 680.2, "label": "Apr 01, 2026", "values": {"svmbir": 27, "mbirjax": 20, "mbircone": 13, "mbirhelical": 9}}, {"x": 689.6, "label": "May 01, 2026", "values": {"svmbir": 27, "mbirjax": 21, "mbircone": 13, "mbirhelical": 9}}, {"x": 699.2, "label": "Jun 01, 2026", "values": {"svmbir": 27, "mbirjax": 22, "mbircone": 13, "mbirhelical": 9}}, {"x": 708.6, "label": "Jul 01, 2026", "values": {"svmbir": 28, "mbirjax": 22, "mbircone": 14, "mbirhelical": 9}}, {"x": 718.2, "label": "Aug 01, 2026", "values": {"svmbir": 28, "mbirjax": 22, "mbircone": 14, "mbirhelical": 9}}, {"x": 727.9, "label": "Sep 01, 2026", "values": {"svmbir": 28, "mbirjax": 23, "mbircone": 14, "mbirhelical": 9}}, {"x": 736.0, "label": "Sep 27, 2026", "values": {"svmbir": 28, "mbirjax": 23, "mbircone": 14, "mbirhelical": 9}}]'/></svg>
+<figcaption>Cumulative GitHub stars by month. Source: GitHub.</figcaption>
+</figure>
+<div class="legend" aria-label="Legend"><span class="key"><i class="swatch s1"></i>svmbir</span><span class="key"><i class="swatch s2"></i>mbirjax</span><span class="key"><i class="swatch s4"></i>mbircone</span><span class="key"><i class="swatch s5"></i>mbirhelical</span></div>
+
+<table>
+<thead><tr><th>Repository</th><th>Stars</th><th>Forks</th><th>Created</th></tr></thead>
+<tbody><tr><td><a href="https://github.com/cabouman/svmbir">svmbir</a></td><td>28</td><td>8</td><td>2020-07</td></tr><tr><td><a href="https://github.com/cabouman/mbirjax">mbirjax</a></td><td>23</td><td>13</td><td>2024-03</td></tr><tr><td><a href="https://github.com/cabouman/mbirtorch">mbirtorch</a></td><td>0</td><td>1</td><td>2026-08</td></tr><tr><td><a href="https://github.com/cabouman/mbircone">mbircone</a></td><td>15</td><td>10</td><td>2020-12</td></tr><tr><td><a href="https://github.com/cabouman/mbirhelical">mbirhelical</a></td><td>9</td><td>1</td><td>2021-10</td></tr><tr><td><a href="https://github.com/cabouman/xcal">xcal</a></td><td>3</td><td>1</td><td>2022-11</td></tr></tbody>
+</table>
+
+<h2>Sources</h2>
+<p class="note">conda-forge counts: the anaconda.org API, all files of the svmbir package, totals since the first
+conda-forge release in 2022. PyPI counts: pypistats.org, daily downloads with mirrors excluded, the most recent
+six months. GitHub: the repositories' star dates and counts. The data snapshot and the script that draws this page
+are in the <a href="https://github.com/cabouman/OpenMBIR-Resources/tree/master/docs/usage">OpenMBIR-Resources</a>
+repository.</p>
+
+<footer>OpenMBIR usage page, generated September 27, 2026.</footer>
+</main>
+<div class="tip" id="tip" role="status"></div>
+<script>
+(function () {
+  var tip = document.getElementById('tip');
+  var colors = {s1: 'var(--s1)', s2: 'var(--s2)', s3: 'var(--s3)', s4: 'var(--s4)', s5: 'var(--s5)'};
+  var slots = {"svmbir": "s1", "mbirjax": "s2", "mbirtorch": "s3", "mbircone": "s4", "mbirhelical": "s5"};
+  function show(x, y, lines) {
+    while (tip.firstChild) tip.removeChild(tip.firstChild);
+    lines.forEach(function (ln) {
+      var row = document.createElement('div'); row.className = 'row';
+      if (ln.series) { var i = document.createElement('i'); i.style.background = colors[slots[ln.series]]; row.appendChild(i); }
+      var t = document.createElement(ln.strong ? 'b' : 'span'); t.textContent = ln.text; row.appendChild(t);
+      tip.appendChild(row);
+    });
+    tip.style.display = 'block';
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    var left = x + 14, top = y + 14;
+    if (left + w > window.innerWidth - 8) left = x - w - 14;
+    if (top + h > window.innerHeight - 8) top = y - h - 14;
+    tip.style.left = (left + window.scrollX) + 'px'; tip.style.top = (top + window.scrollY) + 'px';
+  }
+  function hide() { tip.style.display = 'none'; }
+  document.querySelectorAll('.col').forEach(function (g) {
+    var parts = g.getAttribute('data-tip').split('|');
+    var lines = parts.map(function (p, i) { return {text: p, strong: i === 1}; });
+    g.addEventListener('pointermove', function (e) { show(e.clientX, e.clientY, lines); });
+    g.addEventListener('focus', function () { var r = g.getBoundingClientRect(); show(r.left + r.width / 2, r.top, lines); });
+    g.addEventListener('pointerleave', hide); g.addEventListener('blur', hide);
+  });
+  document.querySelectorAll('.hit-all').forEach(function (rect) {
+    var svg = rect.ownerSVGElement, rows = JSON.parse(rect.getAttribute('data-rows'));
+    var cross = svg.querySelector('.crosshair');
+    rect.addEventListener('pointermove', function (e) {
+      var pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+      var p = pt.matrixTransform(svg.getScreenCTM().inverse());
+      var best = rows[0], d = Infinity;
+      rows.forEach(function (r) { var dd = Math.abs(r.x - p.x); if (dd < d) { d = dd; best = r; } });
+      cross.setAttribute('x1', best.x); cross.setAttribute('x2', best.x); cross.setAttribute('visibility', 'visible');
+      var lines = [{text: best.label}];
+      Object.keys(best.values).forEach(function (k) {
+        if (best.values[k] !== null) lines.push({text: best.values[k].toLocaleString() + '  ' + k, series: k, strong: true});
+      });
+      show(e.clientX, e.clientY, lines);
+    });
+    rect.addEventListener('pointerleave', function () { cross.setAttribute('visibility', 'hidden'); hide(); });
+  });
+})();
+</script>
+</body>
+</html>
