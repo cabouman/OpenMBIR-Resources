@@ -12,6 +12,7 @@ import datetime as dt
 import json
 import os
 import time
+import urllib.error
 import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -27,6 +28,15 @@ def get(url, headers=None, retries=3):
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=h), timeout=120) as r:
                 return json.load(r), r.headers
+        except urllib.error.HTTPError as e:
+            # The workflow token is refused for some public read endpoints;
+            # the same request works anonymously, within the anonymous rate limit.
+            if e.code == 403 and 'Authorization' in h:
+                del h['Authorization']
+                continue
+            if attempt == retries - 1:
+                raise
+            time.sleep(10)
         except Exception:
             if attempt == retries - 1:
                 raise
