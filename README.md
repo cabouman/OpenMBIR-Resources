@@ -2,6 +2,7 @@
 
 This repository provides links to the OpenMBIR family of software packages.
 OpenMBIR is a family of open source packages for model-based iterative reconstruction (MBIR) of tomographic and other sensor data.
+See the [usage page](https://cabouman.github.io/OpenMBIR-Resources/usage/) for download counts of the packages over time.
 
 **[MBIRTorch CT:](https://github.com/cabouman/mbirtorch)**
 with documentation [here](https://mbirtorch.readthedocs.io).
