@@ -20,6 +20,9 @@ It offers:
 We believe it is state-of-the-art in both speed and quality for iterative reconstruction.
 In August 2026 we moved from JAX to PyTorch because of memory efficiency, speed, GPU hardware support, and easier integration with a wide range of PyTorch based AI applications.
 
+**[SVMBIR Parallel CT:](https://github.com/cabouman/svmbir)**
+This is a python package for parallel and fan beam CT reconstruction. The code is very fast and easy to use with good [documentation](https://svmbir.readthedocs.io/en/latest/index.html). This code is useful for reconstructing any parallel beam data including X-ray synchrotron and electron microscopy tilt sequences.
+
 **[Gaussian Mixture EM Clustering Algorithm:](https://github.com/cabouman/pygmcluster)**
 This is a python package for estimating the order and parameters of a Gaussian mixture model from training data. It is a port of some earlier widely used [C code](https://engineering.purdue.edu/~bouman/software/cluster).
 
@@ -35,9 +38,6 @@ This is software for automated calibration of X-ray CT sources and scanners.
 **[MBIRJAX CT:](https://github.com/cabouman/mbirjax)**
 with documentation [here](https://mbirjax.readthedocs.io).
 This is the legacy software on which MBIRTorch is based. It is written in JAX. Everything in MBIRJAX has been ported to MBIRTorch, so we recommend that all users migrate to the new package. Migration should be easy because the two share very similar APIs.
-
-**[SVMBIR Parallel CT:](https://github.com/cabouman/svmbir)**
-This is a python package for parallel and fan beam CT reconstruction. The code is very fast and easy to use with good [documentation](https://svmbir.readthedocs.io/en/latest/index.html). This code is useful for reconstructing any parallel beam data including X-ray synchrotron and electron microscopy tilt sequences.
 
 **[MBIR Cone Beam CT:](https://github.com/cabouman/mbircone)**
 This is a python package for cone beam CT reconstruction. The code is fairly fast and easy to use. It also supports 4D and PnP reconstruction using CNN prior models.
