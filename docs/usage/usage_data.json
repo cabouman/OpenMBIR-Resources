@@ -1,4 +1,5 @@
 {
+ "generated": "2026-09-27",
  "pypi_daily": {
   "svmbir": {
    "2026-03-29": 10,
@@ -590,7 +591,7 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-04-14 13:30:26.018000+00:00",
-   "ndownloads": 3331
+   "ndownloads": 3332
   },
   {
    "version": "0.2.9",
@@ -1359,6 +1360,5 @@
    "forks": 1,
    "created": "2022-11"
   }
- },
- "generated": "2026-09-27"
+ }
 }
