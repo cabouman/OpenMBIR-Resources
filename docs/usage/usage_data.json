@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-27",
+ "generated": "2026-10-01",
  "pypi_daily": {
   "svmbir": {
    "2026-03-29": 10,
@@ -179,7 +179,11 @@
    "2026-09-23": 9,
    "2026-09-24": 56,
    "2026-09-25": 6,
-   "2026-09-26": 6
+   "2026-09-26": 6,
+   "2026-09-27": 643,
+   "2026-09-28": 6,
+   "2026-09-29": 11,
+   "2026-09-30": 31
   },
   "mbirjax": {
    "2026-03-29": 9,
@@ -345,7 +349,9 @@
    "2026-09-23": 2,
    "2026-09-24": 4,
    "2026-09-25": 58,
-   "2026-09-26": 8
+   "2026-09-26": 8,
+   "2026-09-27": 2,
+   "2026-09-28": 3
   },
   "mbirtorch": {
    "2026-08-13": 90,
@@ -379,7 +385,11 @@
    "2026-09-23": 17,
    "2026-09-24": 2,
    "2026-09-25": 3,
-   "2026-09-26": 14
+   "2026-09-26": 14,
+   "2026-09-27": 4,
+   "2026-09-28": 4,
+   "2026-09-29": 2,
+   "2026-09-30": 2
   }
  },
  "conda_files": [
@@ -388,21 +398,21 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-02-06 08:45:31.687000+00:00",
-   "ndownloads": 3340
+   "ndownloads": 3348
   },
   {
    "version": "0.2.7",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-02-06 08:45:51.466000+00:00",
-   "ndownloads": 2834
+   "ndownloads": 2842
   },
   {
    "version": "0.2.7",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-02-06 08:45:53.371000+00:00",
-   "ndownloads": 2847
+   "ndownloads": 2856
   },
   {
    "version": "0.2.7",
@@ -430,21 +440,21 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-03-07 15:08:32.633000+00:00",
-   "ndownloads": 3389
+   "ndownloads": 3396
   },
   {
    "version": "0.2.8",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-03-07 15:08:35.512000+00:00",
-   "ndownloads": 2821
+   "ndownloads": 2828
   },
   {
    "version": "0.2.8",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-03-07 15:09:25.570000+00:00",
-   "ndownloads": 2847
+   "ndownloads": 2855
   },
   {
    "version": "0.2.8",
@@ -472,7 +482,7 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-03-11 16:28:12.546000+00:00",
-   "ndownloads": 2802
+   "ndownloads": 2809
   },
   {
    "version": "0.2.8",
@@ -493,14 +503,14 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-03-11 16:45:27.277000+00:00",
-   "ndownloads": 2819
+   "ndownloads": 2826
   },
   {
    "version": "0.2.8",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-03-11 16:45:56.391000+00:00",
-   "ndownloads": 3379
+   "ndownloads": 3388
   },
   {
    "version": "0.2.8",
@@ -521,28 +531,28 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-04-03 06:39:59.087000+00:00",
-   "ndownloads": 2817
+   "ndownloads": 2825
   },
   {
    "version": "0.2.9",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-04-03 06:40:09.826000+00:00",
-   "ndownloads": 2800
+   "ndownloads": 2808
   },
   {
    "version": "0.2.9",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-04-03 06:40:13.879000+00:00",
-   "ndownloads": 3430
+   "ndownloads": 3437
   },
   {
    "version": "0.2.9",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-04-03 06:40:14.764000+00:00",
-   "ndownloads": 2805
+   "ndownloads": 2812
   },
   {
    "version": "0.2.9",
@@ -577,42 +587,42 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-04-14 13:30:24.981000+00:00",
-   "ndownloads": 2825
+   "ndownloads": 2833
   },
   {
    "version": "0.2.9",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-04-14 13:30:25.379000+00:00",
-   "ndownloads": 2824
+   "ndownloads": 2833
   },
   {
    "version": "0.2.9",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-04-14 13:30:26.018000+00:00",
-   "ndownloads": 3332
+   "ndownloads": 3340
   },
   {
    "version": "0.2.9",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-04-14 13:30:28.288000+00:00",
-   "ndownloads": 3407
+   "ndownloads": 3416
   },
   {
    "version": "0.2.9",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-04-14 13:30:57.126000+00:00",
-   "ndownloads": 2818
+   "ndownloads": 2826
   },
   {
    "version": "0.2.9",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-04-14 13:31:46.263000+00:00",
-   "ndownloads": 2790
+   "ndownloads": 2797
   },
   {
    "version": "0.2.9",
@@ -661,42 +671,42 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-08-23 13:50:31.738000+00:00",
-   "ndownloads": 3153
+   "ndownloads": 3161
   },
   {
    "version": "0.2.10",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-08-23 13:50:37.948000+00:00",
-   "ndownloads": 3148
+   "ndownloads": 3155
   },
   {
    "version": "0.2.10",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-08-23 13:51:44.908000+00:00",
-   "ndownloads": 2662
+   "ndownloads": 2669
   },
   {
    "version": "0.2.10",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-08-23 13:51:50.462000+00:00",
-   "ndownloads": 2686
+   "ndownloads": 2694
   },
   {
    "version": "0.2.10",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-08-23 13:52:02.714000+00:00",
-   "ndownloads": 2641
+   "ndownloads": 2648
   },
   {
    "version": "0.2.10",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-08-23 13:52:08.848000+00:00",
-   "ndownloads": 2697
+   "ndownloads": 2704
   },
   {
    "version": "0.2.10",
@@ -745,35 +755,35 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-09-02 18:49:03.186000+00:00",
-   "ndownloads": 3141
+   "ndownloads": 3148
   },
   {
    "version": "0.3.0",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-09-02 18:49:15.507000+00:00",
-   "ndownloads": 2689
+   "ndownloads": 2696
   },
   {
    "version": "0.3.0",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-09-02 18:49:51.334000+00:00",
-   "ndownloads": 2654
+   "ndownloads": 2661
   },
   {
    "version": "0.3.0",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-09-02 18:50:04.598000+00:00",
-   "ndownloads": 2701
+   "ndownloads": 2710
   },
   {
    "version": "0.3.0",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-09-02 18:50:09.447000+00:00",
-   "ndownloads": 3149
+   "ndownloads": 3156
   },
   {
    "version": "0.3.0",
@@ -815,28 +825,28 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-12-07 04:38:58.775000+00:00",
-   "ndownloads": 2675
+   "ndownloads": 2683
   },
   {
    "version": "0.3.1",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-12-07 04:39:12.184000+00:00",
-   "ndownloads": 2719
+   "ndownloads": 2726
   },
   {
    "version": "0.3.1",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-12-07 04:39:36.812000+00:00",
-   "ndownloads": 3061
+   "ndownloads": 3068
   },
   {
    "version": "0.3.1",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2022-12-07 04:41:05.786000+00:00",
-   "ndownloads": 2997
+   "ndownloads": 3004
   },
   {
    "version": "0.3.1",
@@ -878,35 +888,35 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2023-01-05 13:50:26.092000+00:00",
-   "ndownloads": 2689
+   "ndownloads": 2698
   },
   {
    "version": "0.3.3",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2023-01-05 13:50:28.212000+00:00",
-   "ndownloads": 3057
+   "ndownloads": 3065
   },
   {
    "version": "0.3.3",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2023-01-05 13:50:32.523000+00:00",
-   "ndownloads": 2730
+   "ndownloads": 2737
   },
   {
    "version": "0.3.3",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2023-01-05 13:50:44.972000+00:00",
-   "ndownloads": 3035
+   "ndownloads": 3043
   },
   {
    "version": "0.3.3",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2023-01-05 13:52:27.034000+00:00",
-   "ndownloads": 2638
+   "ndownloads": 2646
   },
   {
    "version": "0.3.3",
@@ -948,28 +958,28 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2023-12-31 05:09:35.061000+00:00",
-   "ndownloads": 2505
+   "ndownloads": 2513
   },
   {
    "version": "0.3.4",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2023-12-31 05:10:49.168000+00:00",
-   "ndownloads": 2572
+   "ndownloads": 2581
   },
   {
    "version": "0.3.4",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2023-12-31 05:11:15.565000+00:00",
-   "ndownloads": 2541
+   "ndownloads": 2548
   },
   {
    "version": "0.3.4",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2023-12-31 05:11:50.989000+00:00",
-   "ndownloads": 2517
+   "ndownloads": 2524
   },
   {
    "version": "0.3.4",
@@ -1004,28 +1014,28 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-01-09 17:04:58.496000+00:00",
-   "ndownloads": 2540
+   "ndownloads": 2547
   },
   {
    "version": "0.4.0",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-01-09 17:06:07.090000+00:00",
-   "ndownloads": 2561
+   "ndownloads": 2569
   },
   {
    "version": "0.4.0",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-01-09 17:06:25.251000+00:00",
-   "ndownloads": 2542
+   "ndownloads": 2551
   },
   {
    "version": "0.4.0",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-01-09 17:06:54.099000+00:00",
-   "ndownloads": 2715
+   "ndownloads": 2722
   },
   {
    "version": "0.4.0",
@@ -1060,14 +1070,14 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-05-19 23:47:30.188000+00:00",
-   "ndownloads": 2474
+   "ndownloads": 2481
   },
   {
    "version": "0.4.0",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-05-19 23:47:40.892000+00:00",
-   "ndownloads": 2369
+   "ndownloads": 2377
   },
   {
    "version": "0.4.0",
@@ -1102,7 +1112,7 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-05-19 23:48:29.980000+00:00",
-   "ndownloads": 2465
+   "ndownloads": 2472
   },
   {
    "version": "0.4.0",
@@ -1116,21 +1126,21 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-05-19 23:49:13.541000+00:00",
-   "ndownloads": 2541
+   "ndownloads": 2549
   },
   {
    "version": "0.4.0",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-05-19 23:49:20.878000+00:00",
-   "ndownloads": 2409
+   "ndownloads": 2416
   },
   {
    "version": "0.4.0",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-11-06 14:52:47.097000+00:00",
-   "ndownloads": 1839
+   "ndownloads": 1847
   },
   {
    "version": "0.4.0",
@@ -1151,21 +1161,21 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-11-06 14:53:25.952000+00:00",
-   "ndownloads": 1855
+   "ndownloads": 1863
   },
   {
    "version": "0.4.0",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-11-06 14:53:29.478000+00:00",
-   "ndownloads": 1822
+   "ndownloads": 1829
   },
   {
    "version": "0.4.0",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-11-06 14:53:45.189000+00:00",
-   "ndownloads": 1800
+   "ndownloads": 1808
   },
   {
    "version": "0.4.0",
@@ -1186,14 +1196,14 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-11-06 16:47:38.932000+00:00",
-   "ndownloads": 2405
+   "ndownloads": 2413
   },
   {
    "version": "0.4.0",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-11-06 16:47:50.591000+00:00",
-   "ndownloads": 2070
+   "ndownloads": 2080
   },
   {
    "version": "0.4.0",
@@ -1214,21 +1224,21 @@
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-11-06 16:48:38.109000+00:00",
-   "ndownloads": 1837
+   "ndownloads": 1845
   },
   {
    "version": "0.4.0",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-11-06 16:48:50.097000+00:00",
-   "ndownloads": 1820
+   "ndownloads": 1827
   },
   {
    "version": "0.4.0",
    "subdir": "linux-64",
    "python": null,
    "upload_time": "2024-11-06 16:48:57.420000+00:00",
-   "ndownloads": 1918
+   "ndownloads": 1925
   },
   {
    "version": "0.4.0",
@@ -1243,6 +1253,90 @@
    "python": null,
    "upload_time": "2024-11-06 16:52:00.310000+00:00",
    "ndownloads": 216
+  },
+  {
+   "version": "0.5.0",
+   "subdir": "linux-64",
+   "python": null,
+   "upload_time": "2026-09-27 17:53:02.257000+00:00",
+   "ndownloads": 81
+  },
+  {
+   "version": "0.5.0",
+   "subdir": "linux-64",
+   "python": null,
+   "upload_time": "2026-09-27 17:53:11.214000+00:00",
+   "ndownloads": 82
+  },
+  {
+   "version": "0.5.0",
+   "subdir": "linux-64",
+   "python": null,
+   "upload_time": "2026-09-27 17:53:53.257000+00:00",
+   "ndownloads": 79
+  },
+  {
+   "version": "0.5.0",
+   "subdir": "linux-64",
+   "python": null,
+   "upload_time": "2026-09-27 17:55:39.232000+00:00",
+   "ndownloads": 86
+  },
+  {
+   "version": "0.5.0",
+   "subdir": "osx-64",
+   "python": null,
+   "upload_time": "2026-09-27 17:57:29.386000+00:00",
+   "ndownloads": 28
+  },
+  {
+   "version": "0.5.0",
+   "subdir": "osx-arm64",
+   "python": null,
+   "upload_time": "2026-09-27 17:57:40.852000+00:00",
+   "ndownloads": 30
+  },
+  {
+   "version": "0.5.0",
+   "subdir": "osx-arm64",
+   "python": null,
+   "upload_time": "2026-09-27 17:57:56.307000+00:00",
+   "ndownloads": 29
+  },
+  {
+   "version": "0.5.0",
+   "subdir": "osx-arm64",
+   "python": null,
+   "upload_time": "2026-09-27 17:58:03.054000+00:00",
+   "ndownloads": 31
+  },
+  {
+   "version": "0.5.0",
+   "subdir": "osx-64",
+   "python": null,
+   "upload_time": "2026-09-27 17:58:04.084000+00:00",
+   "ndownloads": 28
+  },
+  {
+   "version": "0.5.0",
+   "subdir": "osx-64",
+   "python": null,
+   "upload_time": "2026-09-27 17:58:31.583000+00:00",
+   "ndownloads": 28
+  },
+  {
+   "version": "0.5.0",
+   "subdir": "osx-arm64",
+   "python": null,
+   "upload_time": "2026-09-27 17:59:13.070000+00:00",
+   "ndownloads": 46
+  },
+  {
+   "version": "0.5.0",
+   "subdir": "osx-64",
+   "python": null,
+   "upload_time": "2026-09-27 18:00:07.624000+00:00",
+   "ndownloads": 28
   }
  ],
  "github_stars": {
@@ -1341,7 +1435,7 @@
    "created": "2024-03"
   },
   "mbirtorch": {
-   "stars": 0,
+   "stars": 1,
    "forks": 1,
    "created": "2026-08"
   },
