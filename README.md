@@ -24,6 +24,10 @@ In August 2026 we moved from JAX to PyTorch because of memory efficiency, speed,
 **[SVMBIR Parallel CT:](https://github.com/cabouman/svmbir)**
 This is a python package for parallel and fan beam CT reconstruction. The code is very fast and easy to use with good [documentation](https://svmbir.readthedocs.io/en/latest/index.html). This code is useful for reconstructing any parallel beam data including X-ray synchrotron and electron microscopy tilt sequences.
 
+**[xptycho Ptychography:](https://github.com/cabouman/xptycho)**
+with documentation [here](https://xptycho.readthedocs.io).
+This is a python package for ptychographic reconstruction using projected multi-agent consensus equilibrium (PMACE), and it is based on PyTorch. It reconstructs the complex object image from far-field diffraction frames, estimates the probe with one or more modes, and runs on one or more GPUs.
+
 **[Gaussian Mixture EM Clustering Algorithm:](https://github.com/cabouman/pygmcluster)**
 This is a python package for estimating the order and parameters of a Gaussian mixture model from training data. It is a port of some earlier widely used [C code](https://engineering.purdue.edu/~bouman/software/cluster).
 
